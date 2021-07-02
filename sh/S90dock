@@ -1,0 +1,23 @@
+#!/bin/sh
+#n
+#
+case "$1" in
+	start)
+		echo "Starting xag_xhome..."
+		/usr/bin/xag_xhome > /dev/null &
+		sed -i 's/^xag_xhome=.*/xag_xhome=start/g' /etc/autorun.conf
+		;;
+	stop)
+		echo "Stopping xag_xhome..."
+		killall "xag_xhome"
+		sed -i 's/^xag_xhome=.*/xag_xhome=stop/g' /etc/autorun.conf
+		;;
+	restart)
+		"$0" stop
+		sleep 1
+		"$0" start
+		;;
+	*)
+	echo "Usage: $0 {start|stop|restart|reload|force-reload}"
+	exit 1
+	esac

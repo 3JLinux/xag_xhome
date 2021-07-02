@@ -1,0 +1,35 @@
+LIST(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+INCLUDE(launch_build)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
+PROJECT(CANTEST)
+
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+
+#ADD_LIBRARY(spdlog INTERFACE)
+#TARGET_INCLUDE_DIRECTORIES(
+#    spdlog
+#    INTERFACE
+#    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../spdlog>
+#)
+SET(can
+    canbus_socket.cc
+    ../interface/interface.cc
+    ../message/message.cc
+    ../usr/superx4_SAB.cc
+    )
+#INCLUDE_DIRECTORIES(
+#    ${CMAKE_CURRENT_SOURCE_DIR}
+#)
+#ADD_EXECUTABLE(can_test ${can})
+
+#TARGET_LINK_LIBRARIES(can_test 
+#    spdlog)
+FIND_PACKAGE(Threads)
+ADD_EXECUTABLE(can_test ${can})
+TARGET_LINK_LIBRARIES(can_test ${CMAKE_THREAD_LIBS_INIT})
+#find_library(LIBRT rt)
+#if(LIBRT)
+#    TARGET_LINK_LIBRARIES(can_test ${LIBRT})
+#endif()
+TARGET_LINK_LIBRARIES(can_test -lrt)

@@ -1,0 +1,12 @@
+#SET(CMAKE_SYSTEM_PROCESSOR imx8mm)
+
+#SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -debug -lpthread -lrt")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
+ADD_COMPILE_OPTIONS(-lpthread)
+#ADD_COMPILE_OPTIONS(-lrt)
+#ADD_COMPILE_OPTIONS(-ldl)
+#ADD_DEFINITIONS("-lpthread")
+SET(COMPILE_FLAGS "-lpthread -lrt")
+SET(TOOLCHAIN_DIR "/home/yzh/tool/host/bin")
+SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_DIR}/aarch64-imx8mm-linux-gnu-g++)
+message(STATUS "*****${CMAKE_CXX_FLAGS}*****")

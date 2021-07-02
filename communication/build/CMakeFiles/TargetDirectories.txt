@@ -1,0 +1,3 @@
+/home/yzh/XAG/dronestation/communication/build/CMakeFiles/edit_cache.dir
+/home/yzh/XAG/dronestation/communication/build/CMakeFiles/rebuild_cache.dir
+/home/yzh/XAG/dronestation/communication/build/CMakeFiles/can_test.dir
